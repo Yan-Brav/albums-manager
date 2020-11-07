@@ -2,6 +2,7 @@ import React from 'react'
 import {BrowserRouter as Router, Route, NavLink, Redirect, Switch } from 'react-router-dom'
 import './App.css';
 import Albums from './components/albums/Albums';
+import Users from './components/users/Users'
 
 function App() {
 
@@ -23,11 +24,8 @@ function App() {
           <Route path='/albums'>
             <Albums />
           </Route>
-          <Route path='/photos'>
-            <div>Photos</div>
-          </Route>
           <Route path='/users'>
-            <div>Users</div>
+            <Users />
           </Route>
           <Route path='*'>
             <Redirect to='/users'></Redirect>

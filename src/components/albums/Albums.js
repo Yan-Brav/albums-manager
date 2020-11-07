@@ -9,7 +9,7 @@ function Albums({fetchAlbums}) {
 
     let {path} = useRouteMatch();
 
-    useEffect(fetchAlbums, []);
+    useEffect(fetchAlbums, [fetchAlbums]);
 
     return (
         <Switch>
