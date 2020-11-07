@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {useParams, useHistory} from 'react-router-dom';
+import {useParams} from 'react-router-dom'
 import {connect} from 'react-redux';
 import {fetchPhotos} from '../../store/actions/photos';
 
@@ -8,10 +8,6 @@ function AlbumPhotos({list, fetchPhotos}) {
     const {id} = useParams();
 
     useEffect(() => fetchPhotos(id), [fetchPhotos, id]);
-
-    const history = useHistory();
-
-    console.log('History', history);
 
     return (
         <ul>

@@ -9,11 +9,4 @@ export const fetchAlbums = () => async (dispatch) => {
      })
 };
 
-export const ALBUMS_SET_BY_USERID ='ALBUMS_SET_BY_USERID';
-export const fetchAlbumsByUserId = (userId) => async (dispatch) => {
-  const {data} = await api.get(`albums?userId=${userId}`);
-  dispatch({
-      type: ALBUMS_SET_BY_USERID,
-      payload: data
-  })
-};
+

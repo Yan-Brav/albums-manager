@@ -2,19 +2,21 @@
   text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.grid-2-items{
+  display: grid;
+  grid-template-columns: 200px 200px;
+}
+.grid-4-items{
+  display: grid;
+  grid-template-columns: 200px 200px 200px 200px;
 }
 
 .pressed {
   color: #8c2bfb;
   font-style: italic;
+}
+
+nav {
+  margin: 5px;
 }
 

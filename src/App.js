@@ -3,19 +3,16 @@ import {BrowserRouter as Router, Route, NavLink, Redirect, Switch } from 'react-
 import './App.css';
 import Albums from './components/albums/Albums';
 import Users from './components/users/Users'
+import {SELECTED_LINK} from "./constants/class-css";
 
 function App() {
-
-  const classSelectedLink = 'pressed';
 
   return (
     <Router>
       <div id='heading'>
-        <nav>
-          <ul>
-            <li><NavLink to='/albums' activeClassName={classSelectedLink}>Albums</NavLink></li>
-            <li><NavLink to='/users' activeClassName={classSelectedLink}>Users</NavLink></li>
-          </ul>
+        <nav className='grid-2-items'>
+          <NavLink to='/albums' activeClassName={SELECTED_LINK}>Albums</NavLink>
+          <NavLink to='/users' activeClassName={SELECTED_LINK}>Users</NavLink>
         </nav>
       </div>
       <hr />
@@ -28,7 +25,7 @@ function App() {
             <Users />
           </Route>
           <Route path='*'>
-            <Redirect to='/users'></Redirect>
+            <Redirect to='/users'/>
           </Route>
         </Switch>
       </div>
