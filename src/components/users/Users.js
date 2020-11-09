@@ -5,6 +5,7 @@ import UsersList from "./UsersList";
 import './Users.css'
 import {SELECTED_LINK} from "../../constants/class-css";
 import UserAlbums from "./UserAlbums";
+import AlbumPhotos from "../albums/AlbumPhotos";
 
 function Users() {
 
@@ -19,6 +20,11 @@ function Users() {
             </div>
             <hr />
             <Switch>
+                <Route path={`${path}/album/:id`}>
+                    <div>
+                        <AlbumPhotos/>
+                    </div>
+                </Route>
                 <Route path={`${path}/:id`}>
                     <div>
                         <UserAlbums/>

@@ -10,6 +10,7 @@ import './UsersList.css'
 function UsersList({list, fetchUsers, deleteUser}) {
 
     const {url} = useRouteMatch();
+    console.log(url);
 
     useEffect(fetchUsers, [fetchUsers]);
 
