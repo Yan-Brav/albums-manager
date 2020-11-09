@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
 import {connect} from "react-redux";
-import {inputChangeUser, saveUser} from "../../store/actions/users";
+import {createUser, inputChangeUser,/* saveUser,*/ updateUser} from "../../store/actions/users";
 import {useParams} from 'react-router-dom'
 import './css/UsersForm.css'
 
 
 
-function UsersForm({list, inputChangeUser,
-                   saveUser}) {
+function UsersForm({list, inputChangeUser, createUser,
+                       updateUser}) {
 
 
     const {id} = useParams();
-    console.log(parseInt(id) > 1);
+    // console.log(parseInt(id) > 1);
     const initialUser = (parseInt(id) > 0) ? list.find((item) => parseInt(item.id) === parseInt(id)) : getEmptyUser();
     const [selectedUser, setSelectedUser] = useState( initialUser);
 
@@ -47,7 +47,12 @@ function UsersForm({list, inputChangeUser,
 
     function onFormSubmit(e) {
         e.preventDefault();
-        saveUser(selectedUser);
+        if(!selectedUser.id) {
+            createUser(selectedUser)
+        }else {
+            updateUser(selectedUser)
+        }
+        // saveUser(selectedUser);
     }
 
     return (
@@ -74,13 +79,13 @@ function UsersForm({list, inputChangeUser,
                        placeholder='Enter email'
                        onChange={onInputChange}/>
             </div>
-            <div>
+            {/*<div>
                 <input type='text'
                        name='address'
-                       value={`${selectedUser.address.city}, ${selectedUser.address.street}, ${selectedUser.address.suite}`}
+                       value={`${selectedUser.address.city} ${selectedUser.address.street} ${selectedUser.address.suite}`}
                        placeholder='Enter address'
                        onChange={onInputChange}/>
-            </div>
+            </div>*/}
             <div>
                 <input type='text'
                        name='phone'
@@ -95,13 +100,13 @@ function UsersForm({list, inputChangeUser,
                        placeholder='Enter website'
                        onChange={onInputChange}/>
             </div>
-            <div>
+            {/*<div>
                 <input type='text'
                        name='company'
                        value={selectedUser.company.name}
                        placeholder='Enter company'
                        onChange={onInputChange}/>
-            </div>
+            </div>*/}
             <div>
                 <button type='submit' className='save-btn'>Save</button>
                 <button type='button' className='cancel-btn'>Cancel</button>
@@ -115,7 +120,9 @@ const mapStateToProps = ({users: {list}}) => ({list}) ;
 
 const mapDispatchToProps = {
     inputChangeUser,
-    saveUser
+    createUser,
+    updateUser
+    // saveUser
 };
 
 

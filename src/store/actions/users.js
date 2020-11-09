@@ -1,4 +1,4 @@
-import api from "../../api";
+import api from '../../api';
 
 
 export const USERS_SET_LIST = 'USERS_SET_LIST';
@@ -34,22 +34,31 @@ export const inputChangeUser = (payload) => {
         type: INPUT_CHANGE_USER,
         payload
     }
-}
+};
 
-export const SAVE_USER ='SAVE_USER';
-export const saveUser = (user) => async (dispatch) => {
+export const CREATE_USER ='CREATE_USER';
+export const createUser = (user) => async (dispatch) => {
     const {data} = await api.post('users', user);
     console.log('New user: ', data);
     dispatch({
-        type:SAVE_USER,
+        type:CREATE_USER,
         payload: data
     })
 };
 
-/*export const SELECT_USER = 'SELECT_USER';
-export const selectUser = (id) => {
-    return {
-        type: SELECT_USER,
-        payload: id
-    }
+export const UPDATE_USER = 'UPDATE_USER';
+export const updateUser = (user) => async (dispatch) => {
+    await api.put('users/' + user.id, user);
+    dispatch({
+        type: UPDATE_USER,
+        payload: user
+    })
+};
+/*
+export const saveUser = (user) => {
+  if (!user.id) {
+      createUser(user);
+  }  else {
+      updateUser(user);
+  }
 };*/
