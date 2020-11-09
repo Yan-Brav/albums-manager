@@ -6,10 +6,6 @@
   display: grid;
   grid-template-columns: 200px 200px;
 }
-.grid-4-items{
-  display: grid;
-  grid-template-columns: 200px 200px 200px 200px;
-}
 
 .pressed {
   color: #8c2bfb;

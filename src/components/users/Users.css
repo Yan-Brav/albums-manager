@@ -2,3 +2,7 @@
     color: #8c2bfb;
     font-style: italic;
 }
+.grid-2-items{
+    display: grid;
+    grid-template-columns: 200px 200px;
+}

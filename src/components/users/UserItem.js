@@ -5,6 +5,7 @@ function UserItem({item}) {
         <div>
             {`${item.name} ${item.phone}`}
         </div>
+
     );
 }
 

@@ -1,30 +1,20 @@
-import React, {useEffect} from 'react';
-import {NavLink, Route, Switch, /*Redirect,*/ useRouteMatch} from "react-router-dom";
+import React from 'react';
+import {NavLink, Route, Switch, useRouteMatch} from "react-router-dom";
 import UsersForm from "./UsersForm";
 import UsersList from "./UsersList";
 import './Users.css'
-import {connect} from "react-redux";
-import {fetchUsers} from "../../store/actions/users";
 import {SELECTED_LINK} from "../../constants/class-css";
 import UserAlbums from "./UserAlbums";
 
-function Users({fetchUsers}) {
-    /*const {id} = useParams();
-    console.log('Id is', id);*/
-    useEffect(fetchUsers, [fetchUsers]);
+function Users() {
 
     const {path, url} = useRouteMatch();
 
     return (
         <>
             <div id='heading'>
-                <nav className='grid-4-items'>
+                <nav className='grid-2-items'>
                     <NavLink to={`${url}/add`} activeClassName={SELECTED_LINK}>Add</NavLink>
-                    <NavLink to={`${url}/list`} activeClassName={SELECTED_LINK}>Show albums</NavLink>
-                    <NavLink to={`${url}/edit`} activeClassName={SELECTED_LINK}>Edit</NavLink>
-                    <button id='delete-btn'>Delete</button>
-
-                    {/*<NavLink to={`${url}/list`} activeClassName={classSelectedLink}>Delete</NavLink>*/}
                 </nav>
             </div>
             <hr />
@@ -49,6 +39,6 @@ function Users({fetchUsers}) {
     );
 }
 
-const mapDispatchToProps = {fetchUsers};
+// const mapDispatchToProps = {fetchUsers};
 
-export default connect(null, mapDispatchToProps)(Users);
+export default /*connect(null, mapDispatchToProps)*/Users;
