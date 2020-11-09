@@ -1,11 +1,11 @@
 import React from 'react';
-import {NavLink, Route, Switch, useRouteMatch} from "react-router-dom";
+import {NavLink, Redirect, Route, Switch, useRouteMatch} from "react-router-dom";
 import UsersForm from "./UsersForm";
 import UsersList from "./UsersList";
-import './Users.css'
-import {SELECTED_LINK} from "../../constants/class-css";
 import UserAlbums from "./UserAlbums";
 import AlbumPhotos from "../albums/AlbumPhotos";
+import './css/Users.css'
+import {SELECTED_LINK} from "../../constants/class-css";
 
 function Users() {
 
@@ -20,6 +20,17 @@ function Users() {
             </div>
             <hr />
             <Switch>
+                <Route path={`${path}/add/:id`}>
+                    <div>
+                        <UsersForm/>
+                    </div>
+                </Route>
+                <Route path={`${path}/add`}>
+                    <Redirect to={`${path}/add/:id`}/>
+                    <div>
+                        <UsersForm/>
+                    </div>
+                </Route>
                 <Route path={`${path}/album/:id`}>
                     <div>
                         <AlbumPhotos/>
@@ -28,11 +39,6 @@ function Users() {
                 <Route path={`${path}/:id`}>
                     <div>
                         <UserAlbums/>
-                    </div>
-                </Route>
-                <Route path={`${path}/add`}>
-                    <div>
-                        <UsersForm/>
                     </div>
                 </Route>
                 <Route path={`${path}`}>
@@ -45,6 +51,5 @@ function Users() {
     );
 }
 
-// const mapDispatchToProps = {fetchUsers};
 
-export default /*connect(null, mapDispatchToProps)*/Users;
+export default Users;

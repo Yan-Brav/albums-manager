@@ -27,3 +27,29 @@ export const deleteUser = (id) => async (dispatch) => {
         payload: id
     })
 };
+
+export const INPUT_CHANGE_USER = 'INPUT_CHANGE_USER';
+export const inputChangeUser = (payload) => {
+    return {
+        type: INPUT_CHANGE_USER,
+        payload
+    }
+}
+
+export const SAVE_USER ='SAVE_USER';
+export const saveUser = (user) => async (dispatch) => {
+    const {data} = await api.post('users', user);
+    console.log('New user: ', data);
+    dispatch({
+        type:SAVE_USER,
+        payload: data
+    })
+};
+
+/*export const SELECT_USER = 'SELECT_USER';
+export const selectUser = (id) => {
+    return {
+        type: SELECT_USER,
+        payload: id
+    }
+};*/

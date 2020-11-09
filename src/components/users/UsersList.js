@@ -5,12 +5,11 @@ import {SELECTED_LINK} from '../../constants/class-css';
 import UserItem from './UserItem';
 import {deleteUser,
         fetchUsers} from '../../store/actions/users';
-import './UsersList.css'
+import './css/UsersList.css'
 
 function UsersList({list, fetchUsers, deleteUser}) {
 
     const {url} = useRouteMatch();
-    console.log(url);
 
     useEffect(fetchUsers, [fetchUsers]);
 
@@ -22,8 +21,11 @@ function UsersList({list, fetchUsers, deleteUser}) {
                                  activeClassName={SELECTED_LINK}>
                             <UserItem item={item}/>
                         </NavLink>
+                        <NavLink to={`${url}/add/${item.id}`}>
                             <span><i className='fa fa-pencil'/></span>
-                            <span onClick={() => deleteUser(item.id)}><i className='fa fa-trash-o'/></span>
+                        </NavLink>
+                        {/*<span><i className='fa fa-pencil'/></span>*/}
+                        <span onClick={() => deleteUser(item.id)}><i className='fa fa-trash-o'/></span>
                     </li>
                 )
             )}
@@ -35,7 +37,8 @@ const mapStateToProps = ({users: {list}}) => ({list});
 
 const mapDispatchToProps = {
     fetchUsers,
-    deleteUser
+    deleteUser,
+
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersList);
