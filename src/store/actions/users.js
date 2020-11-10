@@ -54,11 +54,3 @@ export const updateUser = (user) => async (dispatch) => {
         payload: user
     })
 };
-/*
-export const saveUser = (user) => {
-  if (!user.id) {
-      createUser(user);
-  }  else {
-      updateUser(user);
-  }
-};*/

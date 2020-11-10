@@ -1,11 +1,11 @@
 import React from 'react';
-import {NavLink, Redirect, Route, Switch, useRouteMatch} from "react-router-dom";
-import UsersForm from "./UsersForm";
-import UsersList from "./UsersList";
-import UserAlbums from "./UserAlbums";
-import AlbumPhotos from "../albums/AlbumPhotos";
+import {NavLink, Redirect, Route, Switch, useRouteMatch} from 'react-router-dom';
+import UsersForm from './UsersForm';
+import UsersList from './UsersList';
+import UserAlbums from './UserAlbums';
+import AlbumPhotos from '../albums/AlbumPhotos';
 import './css/Users.css'
-import {SELECTED_LINK} from "../../constants/class-css";
+import {SELECTED_LINK} from '../../constants/class-css';
 
 function Users() {
 
@@ -50,6 +50,5 @@ function Users() {
         </>
     );
 }
-
 
 export default Users;

@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 import {createUser,
     inputChangeUser,
-    updateUser} from "../../store/actions/users";
+    updateUser} from '../../store/actions/users';
 import {useParams, useHistory} from 'react-router-dom'
 import './css/UsersForm.css'
 
@@ -134,13 +134,10 @@ function UsersForm({list,
 
 const mapStateToProps = ({users: {list}}) => ({list}) ;
 
-
 const mapDispatchToProps = {
     inputChangeUser,
     createUser,
     updateUser
-    // saveUser
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersForm);

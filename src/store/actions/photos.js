@@ -1,4 +1,4 @@
-import api from "../../api";
+import api from '../../api';
 
 
 export const PHOTOS_SET_LIST = 'PHOTOS_SET_LIST';

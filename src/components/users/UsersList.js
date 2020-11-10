@@ -24,8 +24,8 @@ function UsersList({list, fetchUsers, deleteUser}) {
                         <NavLink to={`${url}/add/${item.id}`}>
                             <span><i className='fa fa-pencil'/></span>
                         </NavLink>
-                        {/*<span><i className='fa fa-pencil'/></span>*/}
-                        <span onClick={() => deleteUser(item.id)}><i className='fa fa-trash-o'/></span>
+                        <span onClick={() => deleteUser(item.id)}>
+                            <i className='fa fa-trash-o'/></span>
                     </li>
                 )
             )}
@@ -38,7 +38,6 @@ const mapStateToProps = ({users: {list}}) => ({list});
 const mapDispatchToProps = {
     fetchUsers,
     deleteUser,
-
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersList);
