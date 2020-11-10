@@ -1,43 +1,52 @@
 import React, {useState} from 'react';
 import {connect} from "react-redux";
-import {createUser, inputChangeUser,/* saveUser,*/ updateUser} from "../../store/actions/users";
-import {useParams} from 'react-router-dom'
+import {createUser,
+    inputChangeUser,
+    updateUser} from "../../store/actions/users";
+import {useParams, useHistory} from 'react-router-dom'
 import './css/UsersForm.css'
 
+function getEmptyUser() {
 
+    return {
+        name: '',
+        username: '',
+        email: '',
+        address: {
+            street: '',
+            suite: '',
+            city: '',
+            zipcode: '',
+            geo: {
+                lat: '',
+                lng: ''
+            }
+        },
+        phone: '',
+        website: '',
+        company: {
+            name: '',
+            catchPhrase: '',
+            bs: ''
+        }
+    }
+}
 
-function UsersForm({list, inputChangeUser, createUser,
-                       updateUser}) {
-
+function UsersForm({list,
+                   inputChangeUser,
+                   createUser,
+                   updateUser
+                    }) {
 
     const {id} = useParams();
-    const initialUser = (parseInt(id) > 0) ? list.find((item) => parseInt(item.id) === parseInt(id)) : getEmptyUser();
+    const numberId = parseInt(id);
+    const initialUser = (numberId > 0) ? list.find((item) => parseInt(item.id) === numberId) : getEmptyUser();
     const [selectedUser, setSelectedUser] = useState( initialUser);
 
-    function getEmptyUser() {
+    let history = useHistory();
 
-            return {
-                name: '',
-                username: '',
-                email: '',
-                address: {
-                    street: '',
-                    suite: '',
-                    city: '',
-                    zipcode: '',
-                    geo: {
-                        lat: '',
-                        lng: ''
-                    }
-                },
-                phone: '',
-                website: '',
-                company: {
-                    name: '',
-                    catchPhrase: '',
-                    bs: ''
-                }
-            }
+    function goHome() {
+        history.push('/users');
     }
 
     function onInputChange(e) {
@@ -115,7 +124,9 @@ function UsersForm({list, inputChangeUser, createUser,
             </div>
             <div className='btn-group'>
                 <button type='submit' className='save-btn'>Save</button>
-                <button type='button' className='cancel-btn'>Return</button>
+                <button type='button'
+                        className='cancel-btn'
+                        onClick={goHome}>Return</button>
             </div>
         </form>
     );
