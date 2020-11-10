@@ -11,7 +11,6 @@ function UsersForm({list, inputChangeUser, createUser,
 
 
     const {id} = useParams();
-    // console.log(parseInt(id) > 1);
     const initialUser = (parseInt(id) > 0) ? list.find((item) => parseInt(item.id) === parseInt(id)) : getEmptyUser();
     const [selectedUser, setSelectedUser] = useState( initialUser);
 
@@ -48,68 +47,75 @@ function UsersForm({list, inputChangeUser, createUser,
     function onFormSubmit(e) {
         e.preventDefault();
         if(!selectedUser.id) {
-            createUser(selectedUser)
+            createUser(selectedUser);
+            setSelectedUser(getEmptyUser());
         }else {
             updateUser(selectedUser)
         }
-        // saveUser(selectedUser);
     }
 
     return (
         <form className='users-form'
                 onSubmit={onFormSubmit}>
-            <div>
+            <div className='grid-2-items-form'>
+                <label htmlFor='name'>Name</label>
                 <input type='text'
-                        name='name'
-                        value={selectedUser.name}
-                        placeholder='Enter name'
-                        onChange={onInputChange}/>
+                       name='name'
+                       value={selectedUser.name}
+                       placeholder='Enter name'
+                       onChange={onInputChange}/>
             </div>
-            <div>
+            <div className='grid-2-items-form'>
+                <label htmlFor='username'>Username</label>
                 <input type='text'
                        name='username'
                        value={selectedUser.username}
                        placeholder='Enter username'
                        onChange={onInputChange}/>
             </div>
-            <div>
+            <div className='grid-2-items-form'>
+                <label htmlFor='email'>Email</label>
                 <input type='text'
                        name='email'
                        value={selectedUser.email}
                        placeholder='Enter email'
                        onChange={onInputChange}/>
             </div>
-            {/*<div>
+            <div className='grid-2-items-form'>
+                <label htmlFor='address'>Address</label>
                 <input type='text'
                        name='address'
                        value={`${selectedUser.address.city} ${selectedUser.address.street} ${selectedUser.address.suite}`}
                        placeholder='Enter address'
                        onChange={onInputChange}/>
-            </div>*/}
-            <div>
+            </div>
+            <div className='grid-2-items-form'>
+                <label htmlFor='phone'>Phone</label>
                 <input type='text'
                        name='phone'
                        value={selectedUser.phone}
                        placeholder='Enter phone'
                        onChange={onInputChange}/>
             </div>
-            <div>
+            <div className='grid-2-items-form'>
+                <label htmlFor='website'>Website</label>
                 <input type='text'
                        name='website'
                        value={selectedUser.website}
                        placeholder='Enter website'
                        onChange={onInputChange}/>
             </div>
-            {/*<div>
+            <div className='grid-2-items-form'>
+                <label htmlFor='company'>Company</label>
                 <input type='text'
                        name='company'
                        value={selectedUser.company.name}
                        placeholder='Enter company'
                        onChange={onInputChange}/>
-            </div>*/}
-            <div>
+            </div>
+            <div className='btn-group'>
                 <button type='submit' className='save-btn'>Save</button>
-                <button type='button' className='cancel-btn'>Cancel</button>
+                <button type='button' className='cancel-btn'>Return</button>
             </div>
         </form>
     );

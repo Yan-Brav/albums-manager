@@ -6,6 +6,22 @@ input {
     margin-bottom: 5px;
     margin-right: 5px;
     width: 600px;
-    height: 20px;
+    height: 25px;
     border: black 1px solid;
+}
+label {
+    margin: 5px;
+    width: 100px;
+    height: 25px;
+}
+.grid-2-items-form {
+    display: grid;
+    grid-template-columns: 100px 600px;
+    width: 750px;
+    height: 25px;
+    margin: 5px;
+}
+
+.btn-group {
+    margin-left: 105px;
 }
