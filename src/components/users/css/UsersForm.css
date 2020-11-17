@@ -7,7 +7,7 @@ input {
     margin-right: 5px;
     width: 600px;
     height: 25px;
-    border: black 1px solid;
+    border: black 2px solid;
 }
 label {
     margin: 5px;
@@ -16,8 +16,9 @@ label {
 }
 
 fieldset {
-    border: solid black 1px;
+    border: solid black 2px;
     width: 750px;
+    margin: 5px;
 }
 
 .grid-2-items-form {
@@ -30,4 +31,9 @@ fieldset {
 
 .btn-group {
     margin-left: 105px;
+}
+form {
+    border: solid black 2px;
+    margin: 5px;
+    width: 800px;
 }

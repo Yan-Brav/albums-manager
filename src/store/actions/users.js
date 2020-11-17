@@ -28,29 +28,22 @@ export const deleteUser = (id) => async (dispatch) => {
     })
 };
 
-export const INPUT_CHANGE_USER = 'INPUT_CHANGE_USER';
-export const inputChangeUser = (payload) => {
-    return {
-        type: INPUT_CHANGE_USER,
-        payload
-    }
+export const saveUser = (user) => (dispatch) => {
+    user.id ? updateUser(user, dispatch) : createUser(user, dispatch)
 };
 
 export const CREATE_USER ='CREATE_USER';
-export const createUser = (user) => async (dispatch) => {
-    const {data} = await api.post('users', user);
-    console.log('New user: ', data);
-    dispatch({
+const createUser = (user, dispatch) => {
+    api.post('users', user).then(({data}) => dispatch({
         type:CREATE_USER,
         payload: data
-    })
+    }))
 };
 
 export const UPDATE_USER = 'UPDATE_USER';
-export const updateUser = (user) => async (dispatch) => {
-    await api.put('users/' + user.id, user);
-    dispatch({
+const updateUser = (user, dispatch) => {
+    api.put('users/' + user.id, user).then(({data}) => dispatch({
         type: UPDATE_USER,
-        payload: user
-    })
+        payload: data
+    }))
 };
