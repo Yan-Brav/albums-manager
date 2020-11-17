@@ -14,6 +14,12 @@ label {
     width: 100px;
     height: 25px;
 }
+
+fieldset {
+    border: solid black 1px;
+    width: 750px;
+}
+
 .grid-2-items-form {
     display: grid;
     grid-template-columns: 100px 600px;

@@ -64,7 +64,8 @@ function UsersForm({list,
     }
 
     return (
-        <form className='users-form'
+        <form id='users-form'
+            className='users-form'
                 onSubmit={onFormSubmit}>
             <div className='grid-2-items-form'>
                 <label htmlFor='name'>Name</label>
@@ -90,14 +91,41 @@ function UsersForm({list,
                        placeholder='Enter email'
                        onChange={onInputChange}/>
             </div>
-            <div className='grid-2-items-form'>
-                <label htmlFor='address'>Address</label>
-                <input type='text'
-                       name='address'
-                       value={`${selectedUser.address.city} ${selectedUser.address.street} ${selectedUser.address.suite}`}
-                       placeholder='Enter address'
-                       onChange={onInputChange}/>
-            </div>
+            <fieldset id='address' form='users-form'>
+                <legend>Address</legend>
+                <div className='grid-2-items-form'>
+                    <label htmlFor='address.city'>City</label>
+                    <input type='text'
+                           name='address.city'
+                           value={`${selectedUser.address.city}`}
+                           placeholder='Enter city'
+                           onChange={onInputChange}/>
+                </div>
+                <div className='grid-2-items-form'>
+                    <label htmlFor='address.street'>Street</label>
+                    <input type='text'
+                           name='address.street'
+                           value={`${selectedUser.address.street}`}
+                           placeholder='Enter street'
+                           onChange={onInputChange}/>
+                </div>
+                <div className='grid-2-items-form'>
+                    <label htmlFor='address.suite'>Suite</label>
+                    <input type='text'
+                           name='address.suite'
+                           value={`${selectedUser.address.suite}`}
+                           placeholder='Enter suite'
+                           onChange={onInputChange}/>
+                </div>
+                    <div className='grid-2-items-form'>
+                    <label htmlFor='address.zipcode'>Zipcode</label>
+                    <input type='text'
+                           name='address.zipcode'
+                           value={`${selectedUser.address.zipcode}`}
+                           placeholder='Enter zipcode'
+                           onChange={onInputChange}/>
+                </div>
+            </fieldset>
             <div className='grid-2-items-form'>
                 <label htmlFor='phone'>Phone</label>
                 <input type='text'
